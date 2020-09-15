@@ -1,4 +1,5 @@
 sud: required
+
 services:
   - docker
 
@@ -6,11 +7,16 @@ scripts:
   - docker build -t chris1dock/node .
   - docker images chris1dock/node
 
-# before_deploy:
-#   - docker login -u  -p 
+before_deploy:
+  - docker login -u $DOCKERUSERNAME -p $DOCKERPASS
 
-# deploy:
-#   provider: script
-#   script: docker push chris1dock/node
-#   on:
-#     branch: master
+deploy:
+  provider: script
+  script: docker push chris1dock/node
+  on:
+    branch: master
+
+env:
+  global:
+  - secure: ntscaEmO6z4aDqFpA0klfzPNzdaQUWGC1aPpdCnSMjfDlE8/qohXLb+ll9JejypW7Rih8Bmtw6S8tAdSEMlv2uW31xsUwJjIdFq0gctLX8kBqPvHf8iVIWPpgkSQa6oJJsd28nqSFR9QP7yOMDiTO2Ex6ApfOTID4e6kW985SH1u863DaYnRwqSPtY9lw36qy1TJNGKd0ty+zZUnVQEDZsY8NPIoO2Eafct8NivKmQ1BmK6RFnajjSPZLt2jkkxT6VPfFyflqxveNE4HGN/PymHYmuPJ4o5vUlSXCU/Z7ulXeB9IW2tgJvfiEovLw28epWSEWcwAA3zbWI0zeiekEje6Z6TgGN5D6PUz+5X7A4nqpVsBA5nIxhAAAF9W9Js8gX5vTU1CFcAnsrvHfJpoBBymIGgdfawMzOx7FbiATxWvXNk8jwTgL0tSVKewnJmoobf57WgCMJyLx8uIueqc8nSjAWti3M+q0CbyA6z3VgZFX7ib+0wDrfGEZAdnwVmxEF/YoCVme8vJ9sh0MqVekAZIlOpillsH6YoQa4bkJdIlADirHmo7eMWfML8aKIO3nisZpG2skx3JYDfhZiesvuP0F4GAuF7bmmuVQcidlEZrjGxyKNXLAVGEv6F4xqdkG3xSyuXe3QBGcrVP7uYcuGlvyMdYUuobF1GLI1G+T/w=
+  - secure: KDHCSnYO1MqVpcUKq2iwBawO3T69gzIgzzyEQSVvgmrR/aWcGpLpseMLGZZ9RL+yxzWRKNqJuVYWHeX5LRSnGVFbkG8PDas2xYPZIH38zSMDqZlhDDRCxQvzVKD8pInU7TZdmLmAgBxoSaK8EBvlPDMMiRJ59VeIcG7PdzEVYfnGz75DKi8PsTyiVHiultPOe6LhXleFRIf5KNRsxGCM0qT4L4RlS7n6jyLJ+mTZmmft6qPN0gjdsRnKmus02e00zLqSXKu2M7ZyifIexXFQFdgnPEayW592WHTq8F5Pnm2Bera8sFSsP/A2TnKA6nd1wguLakCIzsG8mHRJDiH1eZ19Nn/RK5ZylGR8CFmyPPV9Aao4KubWs02lPtDPMRuhf3ZyDdg57MhG8JRXtqmU/arWa+8lmDZHvSJKLDILXOxVihfy/Iz9bFHsg221OgZjC8Es0JCMzkTJmkFW7tLvCVi9/UTcmzlwfoXKgC0UKtJ1nkW8tjITsqeN5YcZ+dDPPLws/r5uzfNTksHZqZcHv1E2p9xUSbopLTdD+bMr0MuZCBVtyUgqAtcXYSET3wsuiiIANE2aZWpUiSXdDhaq8w9pNaPnn1xKVjFE4QrVKLQS1DwkxOiqZ6I6qTYDmEv6gdeMrxq5wlyfccSg+ZWWhpHL3xha1Y7GCGDFxKquLFo=
