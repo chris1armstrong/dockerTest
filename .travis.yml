@@ -1,0 +1,16 @@
+sud: required
+services:
+  - docker
+
+scripts:
+  - docker build -t chris1dock/node .
+  - docker images chris1dock/node
+
+# before_deploy:
+#   - docker login -u  -p 
+
+# deploy:
+#   provider: script
+#   script: docker push chris1dock/node
+#   on:
+#     branch: master
